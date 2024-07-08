@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Login</title>
+  <!-- Custom CSS File -->
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <!-- Ajout du logo en haut à gauche de la page -->
+  <img src="public/logo-horizontal.png" alt="Logo" class="logo">
+  <div id="app">
+    <div class="container">
+      <div class="login form">
+        <header>Se connecter</header>
+        <form @submit.prevent="login">
+          <input type="text" v-model="email" placeholder="Email">
+          <input type="password" v-model="password" placeholder="Mot de passe">
+          <input type="submit" class="button" value="Se connecter">
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Import Vue.js, Vue Router and Axios -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue-router/dist/vue-router.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  <!-- Import Axios instance -->
+  <script src="src\axios.js"></script>
+  <script src="src\router\index.js"></script>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          email: '',
+          password: ''
+        };
+      },
+      router, // Assurez-vous que le routeur est ajouté à l'instance Vue
+      methods: {
+        async login() {
+          try {
+            // Utilisation de l'instance Axios configurée
+            await axiosInstance.get('/sanctum/csrf-cookie');
+            const response = await axiosInstance.post('/auth/login', {
+              email: this.email,
+              password: this.password
+            });
+            localStorage.setItem('token', response.data.token);
+            // Redirigez l'utilisateur après une connexion réussie
+            this.$router.push({ name: 'Bien' });
+          } catch (error) {
+            this.errorMessage = 'Erreur de connexion. Veuillez vérifier vos informations.';
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>

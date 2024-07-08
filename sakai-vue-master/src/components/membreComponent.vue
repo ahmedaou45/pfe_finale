@@ -1,0 +1,90 @@
+<template>
+    <div>
+      <form action="thank-you.html">
+        <h2>Nouveau employé</h2>
+        <div class="form-group email">
+          <label for="nom">Nom </label>
+          <input type="text" id="nom">
+        </div>
+        <div class="form-group email">
+          <label for="prenom">Prenom </label>
+          <input type="text" id="prenom">
+        </div>
+        <div class="form-group submit-btn">
+          <input type="submit" value="Valider">
+        </div>
+      </form>
+    </div>
+  </template>
+  
+  <script>
+  export default {
+    name: 'membreComponent'
+  };
+  </script>
+  
+  <style scoped>
+  /* Styles from votre CSS fourni */
+  form {
+    padding: 25px;
+    background: #fff;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+  }
+  form h2 {
+    font-size: 27px;
+    text-align: center;
+    margin: 0px 0 30px;
+  }
+  .form-group {
+    margin-bottom: 15px;
+    position: relative;
+  }
+  label {
+    display: block;
+    font-size: 15px;
+    margin-bottom: 7px;
+  }
+  input,
+  select {
+    height: 45px;
+    padding: 10px;
+    width: 100%;
+    font-size: 15px;
+    outline: none;
+    background: #fff;
+    border-radius: 3px;
+    border: 1px solid #bfbfbf;
+  }
+  input:focus,
+  select:focus {
+    border-color: #9a9a9a;
+  }
+  input.error,
+  select.error {
+    border-color: #f91919;
+    background: #f9f0f1;
+  }
+  .submit-btn {
+    margin-top: 30px;
+  }
+  .submit-btn input {
+    color: white;
+    border: none;
+    height: auto;
+    font-size: 16px;
+    padding: 13px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    text-align: center;
+    background: #1BB295;
+    transition: 0.2s ease;
+  }
+  .submit-btn input:hover {
+    background: #179b81;
+  }
+  </style>
+  
